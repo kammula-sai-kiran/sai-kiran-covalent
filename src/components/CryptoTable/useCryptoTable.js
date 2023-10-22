@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+
 import generateRequiredCryptoData from "../../utils/generateRequiredCryptoData";
 import {
   setCryptoData,
@@ -65,8 +66,7 @@ const useCryptoTable = () => {
 
     fetchDataPeriodically();
 
-    const intervalId = setInterval(fetchDataPeriodically, 10000);
-
+    const intervalId = setInterval(fetchDataPeriodically, 60000);
     return () => {
       clearInterval(intervalId);
     };
