@@ -1,0 +1,14 @@
+.bookmark-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.bookmark-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.bookmarks {
+    border: 1px solid grey; 
+    margin-bottom: 20px;
+    padding: 20px;
+}

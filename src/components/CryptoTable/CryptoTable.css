@@ -1,0 +1,9 @@
+.coin {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.coin-logo {
+    height: 24px;
+    width: 24px;
+}
