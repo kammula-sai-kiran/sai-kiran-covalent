@@ -8,6 +8,7 @@ const cryptoSlice = createSlice({
     bookmarkedCryptoCoins: [],
     bookmarkedCoinsPricesData: [],
     previousBookmarkedCoinsPricesData: [],
+    additionalCryptoData: [],
   },
   reducers: {
     setCryptoData: (state, action) => {
@@ -28,6 +29,9 @@ const cryptoSlice = createSlice({
       state.previousBookmarkedCoinsPricesData = state.bookmarkedCoinsPricesData;
       state.bookmarkedCryptoCoins = newBookmarks;
     },
+    setAdditionalCryptoData: (state, action) => {
+      state.additionalCryptoData = action.payload;
+    },
   },
 });
 
@@ -36,5 +40,6 @@ export const {
   setBookmarkedCryptoCoins,
   unSetBookmarkedCryptoCoins,
   setBookmarkedCoinsPricesData,
+  setAdditionalCryptoData,
 } = cryptoSlice.actions;
 export default cryptoSlice.reducer;

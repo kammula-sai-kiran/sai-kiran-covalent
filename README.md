@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# How to run
+npm start
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Development Approach
+Used CRA to generate a basic react app added required dependencies such as redux
+Used React Bootstrap - I have previosuly worked with MUI and ANTD so wanted to try some new UI library for this project hence used react bootstrap. But Ideally if we want a scalable application which using tables extensively the best bet would be using MUI since it has extensive support for tables.
+Used customHooks -  Seperates out the business logic from the JSX - hence results in cleaner looking code.
+Sorted Imports -  for code redability maintained similar order for imports throughout the repo
+Optimised Code - Used Arrays or Objects as per the problem statement -> ( for optimisation )
+Extensive Use of store - I have made extensive use of store for rendeing of components -  since APIs are involved and similar state variables are being used at multiple places, I wanted to have one source of truth and hence chose to use redux store for stroing all required data.
 
-## Available Scripts
+# Folder Structure 
+assets - consists of svgs --> created as components to increase reusability
+components - all the components go here. I would have used atomic design here if there were more components. In atomic design structure we have atoms, molecules, organisms ad templates, but since this is a minor project I had all the components in the same folder
+pages - consists of homepage
+redux - store and actions are handles here
+utils - constis of utils and helper functions
+constants.js -  all constants go here
 
-In the project directory, you can run:
+# Additional Features Implemented
+I have also implemented the price change functionality on the cryptoTable component - uncomment line 16 and 68 in the cryptoTable.tsx to see the magic. I have commented this code out on purpose since we have bookmarks in the same page and the price fluctuation at two places results in bad user experience.
+Little svg next to the price in the card inidcating the price raise or fall
 
-### `npm start`
+# Challenges
+React Bootstrap -  Since I was working with it for the first time I had to parallely go through docs to get a goos undertanding of bootstrap
+Data structure to use for optimised implimentation - I've processed and structured the data in a way that makes it more convenient for reuse within the Redux state. This format allows for easier rendering when working with the component.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

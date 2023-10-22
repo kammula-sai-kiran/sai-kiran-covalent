@@ -2,11 +2,14 @@ const generateRequiredCryptoData = (allCryptoData) => {
 
     const currentDate = new Date();
 
-    const hours = String(currentDate.getHours()).padStart(2, '0');
-    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
-    
-    const currentTime = `${hours}:${minutes}:${seconds}`;
+    const currentTime = currentDate.toLocaleTimeString();
+
+    const additionalData = Object.assign(
+      {},
+      ...Object.entries(allCryptoData).map(([key, value]) => ({
+        [key]: value.USD,
+      }))
+    );
 
     const requiredCryptoData = Object.entries(allCryptoData).map(([key, value]) => ({
         key,
@@ -18,8 +21,7 @@ const generateRequiredCryptoData = (allCryptoData) => {
         topTierVol: value.USD.TOTALTOPTIERVOLUME24HTO,
         updatedTime: currentTime,
       }));
-
-    return requiredCryptoData;
+    return [requiredCryptoData,additionalData];
 };
 
 export default generateRequiredCryptoData;

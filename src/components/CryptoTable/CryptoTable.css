@@ -7,3 +7,7 @@
     height: 24px;
     width: 24px;
 }
+.checkbox-cell {
+    display: flex;
+    justify-content: center;
+}

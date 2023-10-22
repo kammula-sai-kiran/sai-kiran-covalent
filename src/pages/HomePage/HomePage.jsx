@@ -1,15 +1,15 @@
-import React from 'react';
-import CryptoTable from '../../components/CryptoTable/CryptoTable';
-import BookmarkedCards from '../../components/BookmarkedCards/BookmarkedCards';
+import React from "react";
+
+import CryptoTable from "../../components/CryptoTable";
+import BookmarkedCards from "../../components/BookmarkedCards";
 
 const HomePage = () => {
-    return (
-        <div>
-            <BookmarkedCards />
-            <CryptoTable />
-        </div>
-
-    )
+  return (
+    <div>
+      <BookmarkedCards />
+      <CryptoTable />
+    </div>
+  );
 };
 
-export default HomePage
+export default HomePage;
