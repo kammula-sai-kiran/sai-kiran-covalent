@@ -13,7 +13,7 @@ Extensive Use of store - I have made extensive use of store for rendeing of comp
 assets - consists of svgs --> created as components to increase reusability.
 components - all the components go here. I would have used atomic design here if there were more components. In atomic design structure we have atoms, molecules, organisms ad templates, but since this is a minor project I had all the components in the same folder.
 pages - consists of homepage.
-redux - store and actions are handles here.
+redux - store and actions are handles here, all the api related function such as fetching data also are handled inside the api.js file here.
 utils - constis of utils and helper functions.
 constants.js -  all constants go here.
 

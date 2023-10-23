@@ -1,8 +1,6 @@
-import { useEffect, useCallback } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setBookmarkedCoinsPricesData } from "../../redux/reducers";
-import generateBookmarkedData from "../../utils/generateBookmarkedData";
+import { fetchBookmarkedCryptoPrices } from "../../redux/apis";
 
 const useBookmarkedCards = () => {
   const dispatch = useDispatch();
@@ -26,25 +24,11 @@ const useBookmarkedCards = () => {
     } else return "price-nochange";
   };
 
-  const fetchCryptoPrices = useCallback(async () => {
-    try {
-      const bookMarkedCoinsAsString =
-        bookmarkedCryptoCoins && bookmarkedCryptoCoins.join(",");
-      const url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${bookMarkedCoinsAsString}&tsyms=USD`;
-      if (bookmarkedCryptoCoins?.length) {
-        const response = await axios.get(url);
-        const data = await response.data;
-        const bookmarkedCoinsPricesData = generateBookmarkedData(data);
-        dispatch(setBookmarkedCoinsPricesData(bookmarkedCoinsPricesData));
-      } else dispatch(setBookmarkedCoinsPricesData([]));
-    } catch (error) {
-      console.error(error.message);
-    }
-  }, [bookmarkedCryptoCoins, dispatch]);
+
 
   useEffect(() => {
     const fetchDataPeriodically = () => {
-      fetchCryptoPrices();
+      dispatch(fetchBookmarkedCryptoPrices());
     };
 
     fetchDataPeriodically();
@@ -54,12 +38,11 @@ const useBookmarkedCards = () => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [bookmarkedCryptoCoins, fetchCryptoPrices]);
+  }, [dispatch, bookmarkedCryptoCoins]);
 
   return {
     getPriceColor,
     bookmarkedCoinsPricesData,
-    fetchCryptoPrices,
   };
 };
 

@@ -1,16 +1,13 @@
-import { useEffect, useCallback, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import generateRequiredCryptoData from "../../utils/generateRequiredCryptoData";
 import {
-  setCryptoData,
   setBookmarkedCryptoCoins,
   unSetBookmarkedCryptoCoins,
-  setAdditionalCryptoData,
 } from "../../redux/reducers";
-import { ALL_CRYPTO_DATA_URL, MODAL_TITLE_CONSTANT } from "../../constants";
+import {  MODAL_TITLE_CONSTANT } from "../../constants";
 import generateModalContent from "../../utils/generateModalContent";
+import { fetchCryptoData } from "../../redux/apis";
 
 const useCryptoTable = () => {
   const [showModal, setShowModal] = useState(false);
@@ -45,23 +42,9 @@ const useCryptoTable = () => {
     if (previousCryptoData[i]?.price === currentPrice) return "table-primary";
   };
 
-  const fetchCryptoData = useCallback(async () => {
-    try {
-      const response = await axios.get(ALL_CRYPTO_DATA_URL);
-      const data = await response.data;
-      const allCryptoData = await data.DISPLAY;
-      const [cryptoData, additionalCryptoData] =
-        generateRequiredCryptoData(allCryptoData);
-      dispatch(setCryptoData(cryptoData));
-      dispatch(setAdditionalCryptoData(additionalCryptoData));
-    } catch (error) {
-      console.error(error.message);
-    }
-  }, [dispatch]);
-
   useEffect(() => {
     const fetchDataPeriodically = () => {
-      fetchCryptoData();
+      dispatch(fetchCryptoData());
     };
 
     fetchDataPeriodically();
@@ -70,7 +53,7 @@ const useCryptoTable = () => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [fetchCryptoData]);
+  }, [dispatch]);
 
   return {
     cryptoData,
